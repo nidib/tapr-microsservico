@@ -1,0 +1,27 @@
+{
+	"name": "tapr-microsservico",
+	"type": "module",
+	"scripts": {
+		"start": "tsx src/index.ts",
+		"dev": "tsx watch --env-file=.env src/index.ts",
+		"lint": "prettier . --check",
+		"compile": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@hono/node-server": "^1.2.0",
+		"hono": "^3.9.2",
+		"prexit": "^2.2.0",
+		"winston": "^3.11.0",
+		"zod": "^3.22.4"
+	},
+	"devDependencies": {
+		"@trivago/prettier-plugin-sort-imports": "^4.3.0",
+		"@types/node": "^20.9.0",
+		"prettier": "^3.0.3",
+		"tsx": "^3.12.2",
+		"typescript": "^5.2.2"
+	},
+	"volta": {
+		"node": "20.9.0"
+	}
+}
