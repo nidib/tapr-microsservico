@@ -3,13 +3,16 @@
 	"type": "module",
 	"scripts": {
 		"start": "tsx src/index.ts",
-		"dev": "tsx watch --env-file=.env src/index.ts",
+		"dev": "tsx watch --inspect --env-file=.env src/index.ts",
 		"lint": "prettier . --check",
 		"compile": "tsc --noEmit"
 	},
 	"dependencies": {
+		"@azure/cosmos": "^4.0.0",
+		"@azure/identity": "^4.0.0",
 		"@hono/node-server": "^1.2.0",
 		"hono": "^3.9.2",
+		"http-status-codes": "^2.3.0",
 		"prexit": "^2.2.0",
 		"winston": "^3.11.0",
 		"zod": "^3.22.4"
