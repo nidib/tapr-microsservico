@@ -1,4 +1,6 @@
-# Projeto de TAPR - Microsserviço | Lançamento de notas e frequências do professor
+# Projeto de TAPR - Microsserviço
+
+## Lançamento de notas e frequências do professor
 
 ### Descrição
 
