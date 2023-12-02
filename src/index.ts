@@ -1,5 +1,5 @@
 import { serve } from '@hono/node-server';
-import { ServerType } from '@hono/node-server/dist/types';
+import type { Options, ServerType } from '@hono/node-server/dist/types';
 import prexit from 'prexit';
 
 import { makeApp } from 'src/app';
@@ -14,7 +14,11 @@ function gracefulShutdown(server: ServerType) {
 }
 
 function main() {
-	const app = makeApp();
+	const app: Options = {
+		hostname: '0.0.0.0',
+		port: 8080,
+		fetch: makeApp().fetch,
+	};
 
 	let server = serve(app, options => {
 		logger.info(`Server listening at http://${options.address}:${options.port}`);
