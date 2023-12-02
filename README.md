@@ -16,11 +16,11 @@ Desenvolvido em node, esse microsserviço tem o objetivo de receber requisiçõe
 2.  Ter uma instância do `Cosmos DB`, criar uma database e uma `KEY`
 3.  Duplicar o arquivo `.env-example`, renomear para `.env` e preencher nele as variáveis de ambiente
 
-| Variável        | Descrição                                  | Obrigatória | Valor default |
-| --------------- | ------------------------------------------ | :---------: | :-----------: |
-| COSMOS_DB_NAME  | Nome do database na instância do Cosmos    |     ✅      |       -       |
-| COSMOS_ENDPOINT | URL de conexão para a instância do Cosmos  |     ✅      |       -       |
-| COSMOS_KEY      | KEY de autenticação da instância do Cosmos |     ✅      |       -       |
+| Variável          | Descrição                                  | Obrigatória | Valor default |
+| ----------------- | ------------------------------------------ | :---------: | :-----------: |
+| `COSMOS_DB_NAME`  | Nome do database na instância do Cosmos    |     ✅      |       -       |
+| `COSMOS_ENDPOINT` | URL de conexão para a instância do Cosmos  |     ✅      |       -       |
+| `COSMOS_KEY`      | KEY de autenticação da instância do Cosmos |     ✅      |       -       |
 
 4.  Executar `docker-compose up`
 5.  Após alguns instantes a aplicação deverá estar de rodando na porta `8080`
