@@ -22,7 +22,6 @@ const createSchemas = {
 		justificado: z.boolean(),
 		alunoId: z.string(),
 		turmaId: z.string(),
-		criadoEm: z.string(),
 		atualizadoEm: z.string(),
 	}),
 };

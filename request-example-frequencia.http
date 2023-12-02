@@ -1,0 +1,22 @@
+@url = http://localhost:3000
+
+### Obter todas as frequências
+GET {{url}}/frequencia
+
+### Obter frequência por id
+GET {{url}}/frequencia/916e8dd7-9ac1-4078-839e-b68df76472f8
+
+### Criar frequência
+POST {{url}}/frequencia
+content-type: application/json
+
+{
+    "data": "9-20-2023",
+	"presente": true,
+	"justificado": false,
+	"alunoId": "Richard Bidin",
+	"turmaId": "Calc01"
+}
+
+### Deletar uma frequência
+DELETE {{url}}/frequencia/c2a73275-6e6d-416c-91f7-996bbb08d592

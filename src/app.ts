@@ -1,4 +1,6 @@
 import { Hono } from 'hono';
+import httpStatus from 'http-status-codes';
+import { ZodError } from 'zod';
 
 import { makeFrequenciaRoutes } from 'src/domains/frequencia/frequencia-routes';
 import { makeNotaRoutes } from 'src/domains/nota/nota-routes';
@@ -16,6 +18,12 @@ export function makeApp() {
 	app.onError((e, c) => {
 		if (e instanceof ApiException) {
 			return c.json({ message: e.message }, e.code);
+		}
+
+		if (e instanceof ZodError) {
+			const { fieldErrors } = e.flatten();
+
+			return c.json({ message: 'Validation error', fieldErrors }, httpStatus.BAD_REQUEST);
 		}
 
 		const uncaughtError = new ApiException('Algo deu errado');

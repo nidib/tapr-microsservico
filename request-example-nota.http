@@ -1,0 +1,23 @@
+@url = http://localhost:3000
+
+### Obter todas as notas
+GET {{url}}/nota
+
+### Obter nota por id
+GET {{url}}/nota/8f488706-6599-42d4-b641-fb619267ada0
+
+### Criar nota
+POST {{url}}/nota
+content-type: application/json
+
+{
+    "titulo": "p1",
+    "descricao": "alguma",
+    "nota": 10,
+    "peso": 1,
+    "turmaId": "t3",
+    "alunoId": "a3"
+}
+
+### Deletar uma nota
+DELETE {{url}}/nota/8f488706-6599-42d4-b641-fb619267ada0

@@ -12,9 +12,9 @@ export class CreateFrequenciaUsecase {
 			criadoEm: new Date(),
 			atualizadoEm: new Date(),
 		};
-		const validatedFrequecia = validateNewFrequencia(newFrequencia);
+		const validatedFrequencia = validateNewFrequencia(newFrequencia);
 
-		const createdFrequencia = await this.frequenciaRepository.createOne(validatedFrequecia);
+		const createdFrequencia = await this.frequenciaRepository.createOne(validatedFrequencia);
 
 		return createdFrequencia;
 	}

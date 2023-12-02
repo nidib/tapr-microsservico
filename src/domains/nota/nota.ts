@@ -9,7 +9,7 @@ const persistedNotaSchema = z.object({
 	alunoId: z.string(),
 	turmaId: z.string(),
 	criadoEm: z.date(),
-	atualiadoEm: z.date(),
+	atualizadoEm: z.date(),
 });
 
 const newNotaSchema = z.object({
@@ -20,11 +20,11 @@ const newNotaSchema = z.object({
 	alunoId: z.string(),
 	turmaId: z.string(),
 	criadoEm: z.date(),
-	atualiadoEm: z.date(),
+	atualizadoEm: z.date(),
 });
 
-export function validateNewNota(nota: NewNota): boolean {
-	return persistedNotaSchema.safeParse(nota).success;
+export function validateNewNota(nota: NewNota): NewNota {
+	return newNotaSchema.parse(nota);
 }
 
 export interface NewNota extends z.infer<typeof newNotaSchema> {}

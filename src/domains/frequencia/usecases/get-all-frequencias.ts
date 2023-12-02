@@ -1,5 +1,5 @@
-import { PersistedFrequencia } from 'src/domains/frequencia/frequencia';
-import { FrequenciaRepository } from 'src/domains/frequencia/frequencia-repository';
+import type { PersistedFrequencia } from 'src/domains/frequencia/frequencia';
+import type { FrequenciaRepository } from 'src/domains/frequencia/frequencia-repository';
 
 export class GetAllFrequenciasUsecase {
 	constructor(private frequenciaRepository: FrequenciaRepository) {}
