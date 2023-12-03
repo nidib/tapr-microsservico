@@ -11,7 +11,6 @@
 		"@azure/cosmos": "^4.0.0",
 		"@azure/identity": "^4.0.0",
 		"@azure/service-bus": "^7.9.3",
-		"@dapr/dapr": "^3.2.0",
 		"@hono/node-server": "^1.2.0",
 		"hono": "^3.9.2",
 		"http-status-codes": "^2.3.0",
