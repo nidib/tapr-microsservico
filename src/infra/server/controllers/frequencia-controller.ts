@@ -6,6 +6,8 @@ import { GetAllFrequenciasUsecase } from 'src/domains/frequencia/usecases/get-al
 import { GetFrequenciaByIdUsecase } from 'src/domains/frequencia/usecases/get-frequencia-by-id';
 import { UpdateFrequenciaByIdUsecase } from 'src/domains/frequencia/usecases/update-frequencia-by-id';
 import { FrequenciaCosmosRepository } from 'src/infra/cosmos/repositories/frequencia-cosmos-repository';
+import { ServiceBusRepository } from 'src/infra/topic/repositories/service-bus-repository';
+import { getSender } from 'src/infra/topic/service-bus';
 
 const createSchemas = {
 	request: z.object({
@@ -35,12 +37,20 @@ export class FrequenciaController {
 
 	constructor() {
 		const frequenciaCosmosRepository = new FrequenciaCosmosRepository();
+		const sbSender = getSender();
+		const serviceBusRepository = new ServiceBusRepository(sbSender);
 
 		this.getAllFrequenciasUsecase = new GetAllFrequenciasUsecase(frequenciaCosmosRepository);
 		this.getFrequenciaByIdUsecase = new GetFrequenciaByIdUsecase(frequenciaCosmosRepository);
-		this.createFrequenciaUsecase = new CreateFrequenciaUsecase(frequenciaCosmosRepository);
-		this.updateFrequenciaByIdUsecase = new UpdateFrequenciaByIdUsecase(frequenciaCosmosRepository);
-		this.deleteFrequenciaByIdUsecase = new DeleteFrequenciaByIdUsecase(frequenciaCosmosRepository);
+		this.createFrequenciaUsecase = new CreateFrequenciaUsecase(frequenciaCosmosRepository, serviceBusRepository);
+		this.updateFrequenciaByIdUsecase = new UpdateFrequenciaByIdUsecase(
+			frequenciaCosmosRepository,
+			serviceBusRepository
+		);
+		this.deleteFrequenciaByIdUsecase = new DeleteFrequenciaByIdUsecase(
+			frequenciaCosmosRepository,
+			serviceBusRepository
+		);
 	}
 
 	async getAll() {

@@ -7,6 +7,8 @@ const Env = z.object({
 	COSMOS_DB_NAME: z.string(stringEnvProperties).min(1),
 	COSMOS_ENDPOINT: z.string(stringEnvProperties).url(),
 	COSMOS_KEY: z.string(stringEnvProperties).min(1),
+	TOPIC_CONNECTION_URL: z.string(stringEnvProperties).min(1),
+	TOPIC_NAME: z.string(stringEnvProperties).min(1),
 });
 
 type Env = z.infer<typeof Env>;

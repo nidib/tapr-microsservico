@@ -6,6 +6,8 @@ import { GetAllNotasUsecase } from 'src/domains/nota/usecases/get-all-notas';
 import { GetNotaByIdUsecase } from 'src/domains/nota/usecases/get-nota-by-id';
 import { UpdateNotaByIdUsecase } from 'src/domains/nota/usecases/update-nota-by-id';
 import { NotaCosmosRepository } from 'src/infra/cosmos/repositories/nota-cosmos-repository';
+import { ServiceBusRepository } from 'src/infra/topic/repositories/service-bus-repository';
+import { getSender } from 'src/infra/topic/service-bus';
 
 const createSchemas = {
 	request: z.object({
@@ -37,12 +39,14 @@ export class NotaController {
 
 	constructor() {
 		const notaCosmosRepository = new NotaCosmosRepository();
+		const sbSender = getSender();
+		const serviceBusRepository = new ServiceBusRepository(sbSender);
 
 		this.getAllNotasUsecase = new GetAllNotasUsecase(notaCosmosRepository);
 		this.getNotaByIdUsecase = new GetNotaByIdUsecase(notaCosmosRepository);
-		this.createNotaUsecase = new CreateNotaUsecase(notaCosmosRepository);
-		this.updateNotaByIdUsecase = new UpdateNotaByIdUsecase(notaCosmosRepository);
-		this.deleteNotaByIdUsecase = new DeleteNotaByIdUsecase(notaCosmosRepository);
+		this.createNotaUsecase = new CreateNotaUsecase(notaCosmosRepository, serviceBusRepository);
+		this.updateNotaByIdUsecase = new UpdateNotaByIdUsecase(notaCosmosRepository, serviceBusRepository);
+		this.deleteNotaByIdUsecase = new DeleteNotaByIdUsecase(notaCosmosRepository, serviceBusRepository);
 	}
 
 	async getAll() {
